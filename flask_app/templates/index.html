@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- THE LINE BELOW IS FOR TAILWIND CSS PLUGIN (must add to every html file)  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- THE LINE ABOVE IS FOR TAILWIND CSS PLUGIN (must add to every html file) -->
+    
+    <!-- https://tailwindcss.com/docs/installation/play-cdn (this is where line 9 comes from)-->
+    <!-- https://tailwindcss.com/ (their documentation is fantastic)-->
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1 class=" text-amber-500 text-xl font-bold">Flask Template: Index.html</h1>
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->
