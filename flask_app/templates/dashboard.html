@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- THE LINE BELOW IS FOR TAILWIND CSS PLUGIN (must add to every html file)  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- THE LINE ABOVE IS FOR TAILWIND CSS PLUGIN (must add to every html file) -->
+    
+    <!-- https://tailwindcss.com/docs/installation/play-cdn (this is where line 9 comes from)-->
+    <!-- https://tailwindcss.com/ (their documentation is fantastic)-->
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Reported Sightings</title>
+</head>
+<body class="min-h-screen grid place-content-center radial-yellow">
+    <div class=" static inset-x-0 top-10 text-emerald-600  font-bold text-center text-8xl my-10">
+        <h1 >Dogs Watch Movies</h1>
+    </div>
+    <h2 class=" text-black text-center text-6xl font-bold my-10">Welcome</h2>
+    <button class=" cursor-pointer mx-auto bg-black text-emerald-600 rounded-full w-60 mt-4"><a class=" mx-auto text-3xl cursor-pointer " href="/new/visual">Enter a Visual</a></button>
+    <button class=" cursor-pointer mx-auto bg-emerald-600 text-black rounded-full w-40 mt-4"><a class=" mx-auto text-3xl cursor-pointer" href="/users/logout">Logout</a></button>
+    <div class=" py-8 px-6  sm:px-10">
+        <h3 class=" text-black text-center text-3xl font-bold my-10">Reported Visuals</h3>
+            <div class="flex justify-center">
+                <table class="shadow-2xl font-[Poppins] border-collapse border-2 border-emerald-600 ">
+                    <thead class="text-emerald-600 text-2xl">
+                        <tr>
+                            <th class="py-3 bg-black border border-slate-600 ">Name</th>
+                            <th class="py-3 bg-black border border-slate-600 ">Type</th>
+                            <th class="py-3 bg-black border border-slate-600 ">Genre</th>
+                            <th class="py-3 bg-black border border-slate-600 ">Approved</th>
+                            <th class="py-3 bg-black border border-slate-600 ">Rating</th>
+                            
+                            <th class="py-3 bg-black border border-slate-600 ">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-orange-600 text-2xl text-center">
+                        {% for visual in visuals %}
+                        <tr class="bg-emerald-200 hover:bg-blue-400 hover:scale-105 cursor-pointer duration-300">
+                            <td class="py-3 px-6 border border-slate-700">{{ visual.name }}</td>
+                            <td class="py-3 px-6 border border-slate-700">{{ visual.type }}</td>
+                            <td class="py-3 px-6 border border-slate-700">{{ visual.genre }}</td>
+                            <td class="py-3 px-6 border border-slate-700">
+                                {% if visual.approved ==1 %}
+                                    <p>Yes</p>
+                                {% else %}
+                                    <p>No</p>
+                                {% endif %}
+                            </td>
+                            <td class="py-3 px-6 border border-slate-700">{{ visual.rating }}</td>
+                            
+                            <td>
+                                
+                                <a class="py-3 px-6 border border-slate-700" href="/edit/{{visual.id}}">Edit</a>
+                                
+                                <a class="py-3 px-6 border border-slate-700" href="/show/{{visual.id}}">View</a>
+                                
+                                <a class="py-3 px-6 border border-slate-700" href="/delete/{{visual.id}}">Delete</a>
+                                
+                            </td>
+                        </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+            </div>  
+        </div>
+</body>
+</html>

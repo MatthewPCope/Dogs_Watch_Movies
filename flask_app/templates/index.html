@@ -14,12 +14,17 @@
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
-    <title>Document</title>
+    <title>Dogs Watch Movies</title>
+
 </head>
-<body>
-    <h1 class=" text-amber-500 text-xl font-bold">Flask Template: Index.html</h1>
+<body class="min-h-screen  grid place-content-center radial-yellow">
+    <div class=" static inset-x-0 top-10 text-emerald-600  font-bold text-center text-8xl my-10">
+        <h1 >Dogs Watch Movies</h1>
+        <button class=" cursor-pointer mx-auto bg-black text-emerald-600 rounded-full w-60 mt-4"><a class=" mx-auto text-3xl cursor-pointer" href="/dashboard">Dashboard</a></button>
+    </div>
+    <div id="container">
+        
+
+    </div>      
 </body>
 </html>
-
-<!-- Format for adding images -->
-<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->

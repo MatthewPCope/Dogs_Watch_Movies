@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- THE LINE BELOW IS FOR TAILWIND CSS PLUGIN (must add to every html file)  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- THE LINE ABOVE IS FOR TAILWIND CSS PLUGIN (must add to every html file) -->
+    
+    <!-- https://tailwindcss.com/docs/installation/play-cdn (this is where line 9 comes from)-->
+    <!-- https://tailwindcss.com/ (their documentation is fantastic)-->
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Enter A Visual</title>
+    <div class=" bg-black absolute inset-x-0 top-10 text-red-700 text-center text-3xl my-10">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</head>
+<body class="min-h-screen grid place-content-center radial-yellow">
+    <div class=" static inset-x-0 top-10 text-emerald-600  font-bold text-center text-8xl my-10">
+        <h1 >Dogs Watch Movies</h1>
+    </div>
+    <h2 class=" text-black text-center text-6xl font-bold my-10">Welcome</h2>
+    <button class=" cursor-pointer mx-auto bg-black text-emerald-600 rounded-full w-60 mt-4"><a class=" mx-auto text-3xl cursor-pointer" href="/dashboard">Dashboard</a></button>
+    
+    <div class="bg-black py-8 px-6 shadow rounded-lg sm:px-10">
+        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            <h2 class=" text-emerald-600 text-center text-6xl font-bold my-10">Enter a Visual</h2>
+            <div class="flex justify-center">
+                <form class="flex flex-col" action="/visual/enter" method="post">
+                    
+                    <label class=" text-emerald-600 block text-lg font-medium ml-4">Name:
+                        <input class="w-full border border-red px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-emerald-600 focus:ring focus:ring-emerald-600" type="text" name="name" >
+                    </label>
+                    <label class=" text-emerald-600 block text-lg font-medium ml-4">Type:
+                        <select class="w-full border border-red px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-emerald-600 focus:ring focus:ring-emerald-600" name="type" >
+                            <option value="movie">Movie</option>
+                            <option value="tv_show">TV Show</option>
+                        </select>
+                    </label>
+                    <label class=" text-emerald-600 block text-lg font-medium ml-4">Genre:
+                        <select class="w-full border border-red px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-emerald-600 focus:ring focus:ring-emerald-600" name="genre" >
+                            <option value="comedy">Comedy</option>
+                            <option value="drama">Drama</option>
+                            <option value="family">Family</option>
+                            <option value="action">Action</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="horror">Horror</option>
+                        </select>
+                    </label>
+                    <p class=" text-emerald-600 block text-lg font-medium ml-4">Approved?</p>
+                    <label class=" text-emerald-600 block text-lg font-medium ml-4">Yes
+                        <input class="default:bg-slate-600 w-auto border border-red px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-emerald-600 focus:ring focus:ring-emerald-600" type="radio" name="approved" value="1" >
+                    </label>
+                    <label class=" text-emerald-600 block text-lg font-medium ml-4">No
+                        <input class="default:bg-slate-600 w-auto border border-red px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-emerald-600 focus:ring focus:ring-emerald-600" type="radio" name="approved" value="0" >
+                    </label>
+                    <label class=" text-emerald-600 block text-lg font-medium ml-4">No? Why:
+                        <textarea class="w-full border border-red px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-emerald-600 focus:ring focus:ring-emerald-600" name="NoWhy" ></textarea>
+                    </label>
+                    <label class=" text-emerald-600 block text-lg font-medium ml-4">Notes:
+                        <textarea class="w-full border border-red px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-emerald-600 focus:ring focus:ring-emerald-600" name="notes" ></textarea>
+                    </label>
+                    <label class=" text-emerald-600 block text-lg font-medium ml-4">Rating:
+                        <select class="w-full border border-red px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-emerald-600 focus:ring focus:ring-emerald-600" name="rating" >
+                            <option value="g">G</option>
+                            <option value="pg">PG</option>
+                            <option value="pg_13">PG-13</option>
+                            <option value="r">R</option>
+                            <option value="tv_g">TV-G</option>
+                            <option value="tv_pg">TV-PG</option>
+                            <option value="tv_14">TV-14</option>
+                            <option value="tv_ma">TV-MA</option>
+                        </select>
+                    </label>
+                        <input type="submit" value="Enter" class=" cursor-pointer mx-auto bg-emerald-600 text-black rounded-full w-20 mt-4">
+                </form>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>
