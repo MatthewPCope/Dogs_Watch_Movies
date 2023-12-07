@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.radial-yellow{
+/* .radial-yellow{
     background: radial-gradient(rgb(205, 134, 40),black )
-}
+} */
 
 #container{
     margin:0px auto;
@@ -15,6 +15,7 @@
     align-items:center;
     margin-top: 50px;
     
+    
 }
 #container2{
     margin:0px auto;
@@ -24,3 +25,9 @@
     margin-top: 50px;
     
 }
+
+ body{
+    background-image: url(/static/images/image000000.jpeg);
+    height: 100%;
+    background-size: cover; 
+} 
